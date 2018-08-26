@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 var CenterSchema = new Schema({
     name: String,
     address: String, 
-    phone: Number,
+    phone: String,
     email: String,
     website: String,
     disabilityServed: String

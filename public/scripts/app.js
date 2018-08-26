@@ -13,14 +13,19 @@ $(document).ready(function(){
             centers.forEach(eqCenter => {
                 $('#eqCenterList').append(`<li class= "listItem">
                 ${eqCenter.name}</li>`)
+
                 $('#eqCenterList').append(`<li class= "listItem">
                 ${eqCenter.address}</li>`)
+                
                 $('#eqCenterList').append(`<li class= "listItem">
                 ${eqCenter.number}</li>`)
+                
                 $('#eqCenterList').append(`<li class= "listItem">
                 ${eqCenter.email}</li>`)
+                
                 $('#eqCenterList').append(`<li class= "listItem">
                 ${eqCenter.website}</li>`)
+                
                 $('#eqCenterList').append(`<li class= "listItem">
                 ${eqCenter.disserved}</li>`)
                 
@@ -33,15 +38,22 @@ $(document).ready(function(){
 
 
 
-    // $(addbtn).on('click', function() {
-    //     document.getElementById('name',function(){
-    //         console.log(clicked);
-    //     })
+    $('#form').on('submit', function(event) {
+        event.preventDefault();
+        var data = $(this).serialize();
+        console.log(data)
+        // var center = $(this).serialize;
+      $.ajax({
+          method:'POST',
+          url:"/api/equinecenters",
+          data: data,
+          success: window.location.reload()
+      })
+        })
        
-    //   });
+      });
 
-    //   $(deletebtn).on('click', function() {
-    //     console.log('clicked edit button');
-    //   });
+      $(deletebtn).on('click', function(event) {
+        console.log('clicked delete button');
+      });
 
-})

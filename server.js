@@ -146,15 +146,27 @@ app.get('/api/equinecenters', function (req, res) {
 
 app.post('/api/equinecenters', function (req, res) {
   // send all books as JSON response
-  db.Center.find(function(err, centers){
+  let newCenter = req.body
+  db.Center.create(newCenter,function(err, center){
+    
     if (err) {
       console.log("index error: " + err);
       res.sendStatus(500);
+  
     }
-    res.json({data: centers});
+    res.json({center});
   });
 });
 
+app.delete('api/center/:id'), function(req,res){
+  console.log('center deleted', req.params)
+  var centerID = req.params.id;
+
+  db.Center.findOneAndRemove({_id: centerID})
+    .exec(function(err, deletedCenter){
+      res.json(deletedCenter)
+    })
+}
 
 
 app.listen(process.env.PORT || 3000, () => {
