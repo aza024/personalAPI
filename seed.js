@@ -9,16 +9,12 @@ const db = require('./models')
 const centers = {
     name: "The Root Farm",
     address: "2860 King Road Sauquoit, NY 13456",  
-    phone: 3155207046,
+    number: "3155207046",
     email: "info@RootFarm.org",
     website: "www.rootfarm.org",
-    disabilityServed: "Autisim, Cerebral Palsy, Developmental Delay, Learning Disablities, Sensory Integration Disorders, TBI, Parkinsons Disease, Downs Syndrome"
+    disserved: "Autisim, Cerebral Palsy, Developmental Delay, Learning Disablities, Sensory Integration Disorders, TBI, Parkinsons Disease, Downs Syndrome"
 }
 
-// db.Campsite.create(new_campsite, function(err, campsite){
-//   if (err){
-//     return console.log("Error:", err);
-//   }
 
 db.Center.deleteMany({}, (err, removedCenter) =>{
     if(err){

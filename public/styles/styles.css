@@ -1,27 +1,54 @@
 .bodyContainer{
   height: 90vh;
   margin: 2vw;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(7,6vh);
 }
 .bodyContainer div {
   padding: .2em;
+}
+.listItem{
+  font-size: 1.5em;
+  text-decoration: none;
+  list-style: none;
+  margin-left: 2em;
+}
+/* .editInput{
+  font-size:1em;
+} */
+
+.NYS, .APIDoc{
+  text-align: center;
 }
 .cell{
   font-size: 2em;
   text-align: center;
 }
-
-#eqCenterList{
-  background: lightblue;
+.nameID{
+  font-size: 2em;
+  text-decoration: bolder;
 }
-input{
-  border: 1px solid black;
+#eqCenterList{
+  background:#edebe3;
+  border: 1px solid grey;
+}
+.mainForm{
+  border: 1px solid grey;
+  width: 90vw;
+  padding: .85em;
+  margin: .5em;
+
+}
+ul li{
+  list-style: none;
+}
+button{
+  background-color:lightgrey;
+  font-size: .75em;
+  text-decoration: none;
+  border: 1px solid grey;
 }
 
 @media only screen and (max-width:320px){
-  .cell, .NYS,a{
+  .cell, .NYS, a{
     font-size: 12px;
   }
 }

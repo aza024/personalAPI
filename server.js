@@ -144,7 +144,7 @@ app.get('/api/equinecenters', function (req, res) {
   });
 });
 
-app.post('/api/equinecenters', function (req, res) {
+app.post('/api/equinecenters/', function (req, res) {
   // send all books as JSON response
   let newCenter = req.body
   db.Center.create(newCenter,function(err, center){
@@ -158,15 +158,36 @@ app.post('/api/equinecenters', function (req, res) {
   });
 });
 
-app.delete('api/center/:id'), function(req,res){
-  console.log('center deleted', req.params)
-  var centerID = req.params.id;
+app.put('/api/equinecenters/', function(req,res){
 
-  db.Center.findOneAndRemove({_id: centerID})
-    .exec(function(err, deletedCenter){
-      res.json(deletedCenter)
+  let id = req.query.id;
+  console.log('id ' + id)
+  let update = req.body
+  console.log('update ' + update)
+
+  db.Center.findOneAndUpdate(
+    {_id:id},
+    update,
+    (err, updatedCenter) =>{
+      if(err){return console.log(err)};
+      res.json(updatedCenter)
+    }
+  )
+});
+
+app.delete('/api/equinecenters', function(req,res){
+  console.log('center deleted', req.query)
+  var centerID = req.query.id;
+
+  db.Center.findOneAndRemove({_id: centerID},
+    function(err, deletedCenter){
+      if (err == null) {
+        res.json(deletedCenter)
+      } else {
+        res.json(err)
+      }
     })
-}
+});
 
 
 app.listen(process.env.PORT || 3000, () => {

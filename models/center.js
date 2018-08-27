@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 var CenterSchema = new Schema({
     name: String,
     address: String, 
-    phone: String,
+    number: String,
     email: String,
     website: String,
-    disabilityServed: String
+    disserved: String
 })
 
 var Center = mongoose.model('Center', CenterSchema)
